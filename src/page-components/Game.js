@@ -1,73 +1,34 @@
-import React from "react";
-
-import piedra from "../img/piedra.png";
-import papel from "../img/papel.png";
-import tijera from "../img/tijera.png";
-import lagarto from "../img/lagarto.png";
-import spock from "../img/spock.png";
-
-const elecciones = [
-  {
-    nombre: "Piedra",
-    imagen: piedra,
-    leGanaA: ["Lagarto", "Tijera"],
-  },
-  {
-    nombre: "Papel",
-    imagen: papel,
-    leGanaA: ["Piedra", "Spock"],
-  },
-  {
-    nombre: "Tijera",
-    imagen: tijera,
-    leGanaA: ["Lagarto", "Papel"],
-  },
-  {
-    nombre: "Lagarto",
-    imagen: lagarto,
-    leGanaA: ["Spock", "Papel"],
-  },
-  {
-    nombre: "Spock",
-    imagen: spock,
-    leGanaA: ["Tijera", "Piedra"],
-  },
-];
-
-/**
- * 
- * 
- * 
-    Tijera corta a Papel
-    Papel tapa a Piedra
-    Piedra aplasta a Lagarto
-    Lagarto envenena a Spock
-    Spock rompe a Tijera
-    Tijera decapita a Lagarto
-    Lagarto devora a Papel
-    Papel desautoriza a Spock
-    Spock vaporiza a Piedra
-    y como siempre, Piedra aplasta a Tijera
-
-{
-    valor: "Tijera",
-    ganaA: ["Papel", "Lagarto"],
-    pierdeCon: ["Piedra", "Spock"]
-}
-
-if(player1.choice.valor === player2.choice.valor) { empate }
-elseif(player1.choise.leGanaA(player2.choice)) { player1 }
-else { player2 }
-
-
- * 
- * 
- * 
- * 
- */
+import React, { useEffect, useState } from "react";
+import SelectOption from "../components/SelectOption";
+import { calculateWinner } from "../utils/calculateWinner";
+import { randomOption } from "../utils/randomOption";
 
 const Game = () => {
-  return <h1>Game</h1>;
+  const singlePlayer = true;
+
+  const [player1, setPlayer1] = useState(null);
+  const [player2, setPlayer2] = useState(singlePlayer ? randomOption() : null);
+  const [visible, setVisible] = useState(false);
+  const [winner, setWinner] = useState(null);
+
+  useEffect(() => {
+    if (player1 && player2) {
+      setTimeout(() => {
+        setVisible(true);
+        setWinner(calculateWinner(player1, player2));
+      }, 1000);
+    }
+  }, [player1, player2]);
+
+  return (
+    <div>
+      <h1>J1</h1>
+      <SelectOption player={player1} setPlayer={setPlayer1} visible={visible} />
+      <h1>J2</h1>
+      <SelectOption player={player2} setPlayer={setPlayer2} visible={visible} />
+      {winner && <p>{winner === "empate" ? "empate" : winner.nombre}</p>}
+    </div>
+  );
 };
 
 export default Game;
