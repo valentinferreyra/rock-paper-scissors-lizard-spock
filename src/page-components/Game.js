@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import SelectOption from "../components/SelectOption";
 import { calculateWinner } from "../utils/calculateWinner";
 import { randomOption } from "../utils/randomOption";
+import queryString from "query-string";
 
 const Game = () => {
-  const singlePlayer = true;
+  const { singlePlayer } = queryString.parse(useLocation().search);
+
+  const defaultOption = singlePlayer === "true" ? randomOption() : null;
 
   const [player1, setPlayer1] = useState(null);
-  const [player2, setPlayer2] = useState(singlePlayer ? randomOption() : null);
   const [visible, setVisible] = useState(false);
   const [winner, setWinner] = useState(null);
+  const [player2, setPlayer2] = useState(defaultOption);
 
   useEffect(() => {
     if (player1 && player2) {
