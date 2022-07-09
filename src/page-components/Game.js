@@ -10,27 +10,35 @@ const Game = () => {
 
   const defaultOption = singlePlayer === "true" ? randomOption() : null;
 
-  const [player1, setPlayer1] = useState(null);
+  const [firstPlayerChoice, setFirstPlayerChoice] = useState(null);
+  const [secondPlayerChoice, setSecondPlayerChoice] = useState(defaultOption);
   const [visible, setVisible] = useState(false);
   const [winner, setWinner] = useState(null);
-  const [player2, setPlayer2] = useState(defaultOption);
 
   useEffect(() => {
-    if (player1 && player2) {
+    if (firstPlayerChoice && secondPlayerChoice) {
       setTimeout(() => {
         setVisible(true);
-        setWinner(calculateWinner(player1, player2));
+        setWinner(calculateWinner(firstPlayerChoice, secondPlayerChoice));
       }, 1000);
     }
-  }, [player1, player2]);
+  }, [firstPlayerChoice, secondPlayerChoice]);
 
   return (
     <div>
       <h1>J1</h1>
-      <SelectOption player={player1} setPlayer={setPlayer1} visible={visible} />
+      <SelectOption
+        playerChoice={firstPlayerChoice}
+        setPlayerChoice={setFirstPlayerChoice}
+        visible={visible}
+      />
       <h1>J2</h1>
-      <SelectOption player={player2} setPlayer={setPlayer2} visible={visible} />
-      {winner && <p>{winner === "empate" ? "empate" : winner.nombre}</p>}
+      <SelectOption
+        playerChoice={secondPlayerChoice}
+        setPlayerChoice={setSecondPlayerChoice}
+        visible={visible}
+      />
+      {winner && <p>{winner === "empate" ? "empate" : winner.name}</p>}
     </div>
   );
 };

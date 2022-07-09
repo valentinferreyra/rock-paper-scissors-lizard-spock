@@ -1,6 +1,6 @@
-import { elecciones } from "./elecciones";
+import { selections } from "./selections";
 
 export const randomOption = () => {
-  const randomIndex = Math.floor(Math.random() * elecciones.length);
-  return elecciones[randomIndex];
+  const randomIndex = Math.floor(Math.random() * selections.length);
+  return selections[randomIndex];
 };
