@@ -1,15 +1,18 @@
 import React from "react";
 import { selections } from "../utils/selections";
 
-const SelectOption = ({ playerChoice, setPlayerChoice, visible }) => {
-  if (playerChoice) {
-    return <h1>{visible ? playerChoice.name : "?"}</h1>;
+const SelectOption = ({ player, setPlayer, visible }) => {
+  if (player.currentChoice) {
+    return <h1>{visible ? player.currentChoice.name : "?"}</h1>;
   }
 
   return (
     <div>
       {selections.map((choice) => (
-        <button onClick={() => setPlayerChoice(choice)} key={choice.name}>
+        <button
+          onClick={() => setPlayer({ ...player, currentChoice: choice })}
+          key={choice.name}
+        >
           <img src={choice.image} alt={choice.name} />
         </button>
       ))}

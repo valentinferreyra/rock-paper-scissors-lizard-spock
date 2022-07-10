@@ -11,65 +11,79 @@ const Game = () => {
 
   const defaultOption = singlePlayer === "true" ? randomOption() : null;
 
-  const [firstPlayerChoice, setFirstPlayerChoice] = useState(null);
-  const [secondPlayerChoice, setSecondPlayerChoice] = useState(defaultOption);
-  const [firstPlayerScore, setFirstPlayerScore] = useState(0);
-  const [secondPlayerScore, setSecondPlayerScore] = useState(0);
+  const [firstPlayer, setFirstPlayer] = useState({
+    name: "Jugador 1",
+    currentChoice: null,
+    score: 0,
+  });
+  const [secondPlayer, setSecondPlayer] = useState({
+    name: singlePlayer === "true" ? "Sheldon" : "Jugador 2",
+    currentChoice: defaultOption,
+    score: 0,
+  });
+
   const [visible, setVisible] = useState(false);
   const [winner, setWinner] = useState(null);
 
   useEffect(() => {
-    if (firstPlayerChoice && secondPlayerChoice) {
+    if (firstPlayer.currentChoice && secondPlayer.currentChoice) {
       setTimeout(() => {
-        var winner = calculateWinner(firstPlayerChoice, secondPlayerChoice);
+        const winner = calculateWinner(
+          firstPlayer.currentChoice,
+          secondPlayer.currentChoice
+        );
         setVisible(true);
         setWinner(winner);
-        if (winner.name === firstPlayerChoice.name) {
-          setFirstPlayerScore(firstPlayerScore + 1);
+        if (winner.name === firstPlayer.currentChoice.name) {
+          setFirstPlayer({ ...firstPlayer, score: firstPlayer.score + 1 });
         }
-        if (winner.name === secondPlayerChoice.name) {
-          setSecondPlayerScore(secondPlayerScore + 1);
+        if (winner.name === secondPlayer.currentChoice.name) {
+          setSecondPlayer({ ...secondPlayer, score: secondPlayer.score + 1 });
         }
       }, 1000);
     }
-  }, [firstPlayerChoice, secondPlayerChoice]);
+  }, [firstPlayer.currentChoice, secondPlayer.currentChoice]);
 
-  const playNextRound = () => {
+  const playAgain = (isNewGame = false) => {
+    setWinner(null);
     setVisible(false);
-    setFirstPlayerChoice(null);
-    setSecondPlayerChoice(defaultOption);
-  };
-
-  const playAgain = () => {
-    playNextRound();
-    setFirstPlayerScore(0);
-    setSecondPlayerScore(0);
+    setFirstPlayer({
+      ...firstPlayer,
+      currentChoice: null,
+      score: isNewGame ? 0 : firstPlayer.score,
+    });
+    setSecondPlayer({
+      ...secondPlayer,
+      currentChoice: defaultOption,
+      score: isNewGame ? 0 : secondPlayer.score,
+    });
   };
 
   return (
     <div>
-      <h1>J1: {firstPlayerScore}</h1>
+      <h1>Jugador 1: {firstPlayer.score}</h1>
       <SelectOption
-        playerChoice={firstPlayerChoice}
-        setPlayerChoice={setFirstPlayerChoice}
+        player={firstPlayer}
+        setPlayer={setFirstPlayer}
         visible={visible}
       />
       <h1>
-        {singlePlayer === "true" ? "Sheldon" : "J2"}: {secondPlayerScore}
+        {singlePlayer === "true" ? "Sheldon" : "Jugador 2"}:{" "}
+        {secondPlayer.score}
       </h1>
       <SelectOption
-        playerChoice={secondPlayerChoice}
-        setPlayerChoice={setSecondPlayerChoice}
+        player={secondPlayer}
+        setPlayer={setSecondPlayer}
         visible={visible}
       />
+      <Link to="/">Volver a inicio</Link>
       {winner && (
         <div>
           <p>
             {winner === "empate" ? "Hay empate" : `${winner.name} es mejor`}
           </p>
-          <button onClick={() => playNextRound()}>Siguiente</button>
-          <button onClick={() => playAgain()}>Jugar de nuevo</button>
-          <Link to="/">Volver a inicio</Link>
+          <button onClick={() => playAgain()}>Siguiente</button>
+          <button onClick={() => playAgain(true)}>Jugar de nuevo</button>
         </div>
       )}
     </div>
