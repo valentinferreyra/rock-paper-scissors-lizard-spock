@@ -7,8 +7,7 @@ const SheldonRulesVideo = () => {
         width="50%"
         height="50%"
         controls
-        autoPlay="true"
-        src="https://www.youtube.com/watch?v=Y6GPW1vUaqU"
+        src="https://www.youtube.com/embed/Y6GPW1vUaqU"
       ></video>
     </div>
   );

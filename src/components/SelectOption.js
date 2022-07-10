@@ -9,7 +9,7 @@ const SelectOption = ({ playerChoice, setPlayerChoice, visible }) => {
   return (
     <div>
       {selections.map((choice) => (
-        <button onClick={() => setPlayerChoice(choice)}>
+        <button onClick={() => setPlayerChoice(choice)} key={choice.name}>
           <img src={choice.image} alt={choice.name} />
         </button>
       ))}

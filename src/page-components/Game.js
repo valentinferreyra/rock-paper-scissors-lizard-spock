@@ -64,7 +64,9 @@ const Game = () => {
       />
       {winner && (
         <div>
-          <p>{winner === "empate" ? "empate" : winner.name}</p>
+          <p>
+            {winner === "empate" ? "Hay empate" : `${winner.name} es mejor`}
+          </p>
           <button onClick={() => playNextRound()}>Siguiente</button>
           <button onClick={() => playAgain()}>Jugar de nuevo</button>
           <Link to="/">Volver a inicio</Link>
