@@ -1,8 +1,17 @@
 import React from "react";
 
 const SheldonRulesVideo = () => {
-  return <div>SheldonRulesVideo</div>;
-  // https://youtu.be/Y6GPW1vUaqU
+  return (
+    <div>
+      <video
+        width="50%"
+        height="50%"
+        controls
+        autoPlay="true"
+        src="https://www.youtube.com/watch?v=Y6GPW1vUaqU"
+      ></video>
+    </div>
+  );
 };
 
 export default SheldonRulesVideo;
