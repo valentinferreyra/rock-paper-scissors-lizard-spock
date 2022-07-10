@@ -10,12 +10,20 @@ const Home = () => {
       <div className="game-mode-container">
         <p className="game-mode-container__title">Elige el modo de juego</p>
         <div className="game-mode-container__buttons">
-          <Link to="/game?singlePlayer=true">
-            <Singleplayer />
-          </Link>
-          <Link to="/game?singlePlayer=false">
-            <Multiplayer />
-          </Link>
+          <div className="game-mode-container__buttons__option">
+            <Link to="/game?singlePlayer=true">
+              <Singleplayer />
+            </Link>
+            <p>Un jugador</p>
+            <p>vs. Sheldon</p>
+          </div>
+          <div className="game-mode-container__buttons__option">
+            <Link to="/game?singlePlayer=false">
+              <Multiplayer />
+            </Link>
+            <p>Dos jugadores</p>
+            <p>localmente</p>
+          </div>
         </div>
         <Link to="/rules" className="game-mode-container__rules">
           ¿No conoces las reglas?
