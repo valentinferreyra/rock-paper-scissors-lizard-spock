@@ -1,17 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Multiplayer from "../img/svg/Multiplayer";
+import Singleplayer from "../img/svg/Singleplayer";
 
 const Home = () => {
   return (
-    <div>
-      <h1>¡Bienvenido!</h1>
-      <div>
-        <p>Elige el modo de juego</p>
-        <Link to="/game?singlePlayer=true">Un jugador</Link>
-        <Link to="/game?singlePlayer=false">Dos jugadores</Link>
-      </div>
-      <div>
-        <Link to="/rules">¿No conoces las reglas?</Link>
+    <div className="home-container">
+      <h1 className="home-container__title">¡Bienvenido!</h1>
+      <div className="game-mode-container">
+        <p className="game-mode-container__title">Elige el modo de juego</p>
+        <div className="game-mode-container__buttons">
+          <Link to="/game?singlePlayer=true">
+            <Singleplayer />
+          </Link>
+          <Link to="/game?singlePlayer=false">
+            <Multiplayer />
+          </Link>
+        </div>
+        <Link to="/rules" className="game-mode-container__rules">
+          ¿No conoces las reglas?
+        </Link>
       </div>
     </div>
   );
