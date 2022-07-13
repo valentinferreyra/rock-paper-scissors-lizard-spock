@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Multiplayer from "../img/svg/Multiplayer";
-import Singleplayer from "../img/svg/Singleplayer";
+import MultiplayerLogo from "../img/svg/MultiplayerLogo";
+import SingleplayerLogo from "../img/svg/SingleplayerLogo";
 
 const Home = () => {
   return (
@@ -12,14 +12,14 @@ const Home = () => {
         <div className="game-mode-container__buttons">
           <div className="game-mode-container__buttons__option">
             <Link to="/game?singlePlayer=true">
-              <Singleplayer />
+              <SingleplayerLogo />
             </Link>
             <p>Un jugador</p>
             <p>vs. Sheldon</p>
           </div>
           <div className="game-mode-container__buttons__option">
             <Link to="/game?singlePlayer=false">
-              <Multiplayer />
+              <MultiplayerLogo />
             </Link>
             <p>Dos jugadores</p>
             <p>localmente</p>
