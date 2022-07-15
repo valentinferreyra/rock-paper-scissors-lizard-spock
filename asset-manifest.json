@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/unq-ui-valentin-ferreyra-trabajo-final/static/css/main.d96271db.css",
+    "main.js": "/unq-ui-valentin-ferreyra-trabajo-final/static/js/main.3fb075a6.js",
+    "static/js/787.28cb0dcd.chunk.js": "/unq-ui-valentin-ferreyra-trabajo-final/static/js/787.28cb0dcd.chunk.js",
+    "static/media/tijera.png": "/unq-ui-valentin-ferreyra-trabajo-final/static/media/tijera.c153269bc3b452cc80f5.png",
+    "static/media/spock.png": "/unq-ui-valentin-ferreyra-trabajo-final/static/media/spock.a7acfd39aacc65dd6c27.png",
+    "static/media/papel.png": "/unq-ui-valentin-ferreyra-trabajo-final/static/media/papel.e951479af2fab19d64fa.png",
+    "static/media/lagarto.png": "/unq-ui-valentin-ferreyra-trabajo-final/static/media/lagarto.3beba350434ab64c5f39.png",
+    "static/media/piedra.png": "/unq-ui-valentin-ferreyra-trabajo-final/static/media/piedra.3c5d33a9b151f97f0ac9.png",
+    "static/media/rules.png": "/unq-ui-valentin-ferreyra-trabajo-final/static/media/rules.889e9ce26a9fddd4e821.png",
+    "index.html": "/unq-ui-valentin-ferreyra-trabajo-final/index.html",
+    "main.d96271db.css.map": "/unq-ui-valentin-ferreyra-trabajo-final/static/css/main.d96271db.css.map",
+    "main.3fb075a6.js.map": "/unq-ui-valentin-ferreyra-trabajo-final/static/js/main.3fb075a6.js.map",
+    "787.28cb0dcd.chunk.js.map": "/unq-ui-valentin-ferreyra-trabajo-final/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d96271db.css",
+    "static/js/main.3fb075a6.js"
+  ]
+}
